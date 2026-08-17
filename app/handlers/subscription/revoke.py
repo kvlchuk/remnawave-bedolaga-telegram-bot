@@ -49,7 +49,7 @@ def _build_revoke_confirm_keyboard(
             ],
             [
                 InlineKeyboardButton(
-                    text=texts.BACK,
+                    text=texts.BACK, icon_custom_emoji_id='5258236805890710909',
                     callback_data=back_callback,
                 ),
             ],
@@ -74,7 +74,7 @@ def _build_revoke_success_keyboard(
             ],
             [
                 InlineKeyboardButton(
-                    text=texts.BACK,
+                    text=texts.BACK, icon_custom_emoji_id='5258236805890710909',
                     callback_data=back_callback,
                 ),
             ],
@@ -223,7 +223,7 @@ async def confirm_subscription_revoke(
             texts.t('SUBSCRIPTION_REVOKE_ERROR', '❌ Ошибка при перевыпуске подписки. Попробуйте позже.'),
             reply_markup=InlineKeyboardMarkup(
                 inline_keyboard=[
-                    [InlineKeyboardButton(text=texts.BACK, callback_data='menu_subscription')],
+                    [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_subscription')],
                 ]
             ),
             parse_mode='HTML',

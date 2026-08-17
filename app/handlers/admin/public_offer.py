@@ -188,7 +188,7 @@ async def _build_overview(
     buttons.append(
         [
             types.InlineKeyboardButton(
-                text=texts.BACK,
+                text=texts.BACK, icon_custom_emoji_id='5258236805890710909',
                 callback_data='admin_submenu_settings',
             )
         ]

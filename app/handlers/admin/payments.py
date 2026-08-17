@@ -280,7 +280,7 @@ def _build_list_keyboard(
 
         buttons.append(navigation_row)
 
-    buttons.append([InlineKeyboardButton(text=texts.BACK, callback_data='admin_panel')])
+    buttons.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_panel')])
 
     return InlineKeyboardMarkup(inline_keyboard=buttons)
 
@@ -326,7 +326,7 @@ def _build_detail_keyboard(
             ]
         )
 
-    rows.append([InlineKeyboardButton(text=texts.BACK, callback_data='admin_payments')])
+    rows.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_payments')])
     return InlineKeyboardMarkup(inline_keyboard=rows)
 
 

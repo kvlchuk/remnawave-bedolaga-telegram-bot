@@ -87,7 +87,7 @@ async def show_daily_contests(
                 )
             ]
         )
-    keyboard_rows.append([types.InlineKeyboardButton(text=texts.BACK, callback_data='admin_contests')])
+    keyboard_rows.append([types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_contests')])
 
     await callback.message.edit_text(
         '\n'.join(lines),
@@ -259,7 +259,7 @@ async def prompt_edit_field(
         inline_keyboard=[
             [
                 types.InlineKeyboardButton(
-                    text=texts.BACK,
+                    text=texts.BACK, icon_custom_emoji_id='5258236805890710909',
                     callback_data=f'admin_daily_contest_{template_id}',
                 )
             ]
@@ -317,7 +317,7 @@ async def process_edit_field(
         inline_keyboard=[
             [
                 types.InlineKeyboardButton(
-                    text=texts.BACK,
+                    text=texts.BACK, icon_custom_emoji_id='5258236805890710909',
                     callback_data=f'admin_daily_contest_{template_id}',
                 )
             ]
@@ -349,7 +349,7 @@ async def edit_payload(
         inline_keyboard=[
             [
                 types.InlineKeyboardButton(
-                    text=texts.BACK,
+                    text=texts.BACK, icon_custom_emoji_id='5258236805890710909',
                     callback_data=f'admin_daily_contest_{template_id}',
                 )
             ]
@@ -399,7 +399,7 @@ async def process_payload(
         inline_keyboard=[
             [
                 types.InlineKeyboardButton(
-                    text=texts.BACK,
+                    text=texts.BACK, icon_custom_emoji_id='5258236805890710909',
                     callback_data=f'admin_daily_contest_{template_id}',
                 )
             ]

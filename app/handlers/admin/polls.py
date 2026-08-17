@@ -275,7 +275,7 @@ def _build_polls_keyboard(polls: list[Poll], language: str) -> types.InlineKeybo
     keyboard.append(
         [
             types.InlineKeyboardButton(
-                text=texts.BACK,
+                text=texts.BACK, icon_custom_emoji_id='5258236805890710909',
                 callback_data='admin_submenu_communications',
             )
         ]
@@ -373,7 +373,7 @@ def _build_target_keyboard(poll_id: int, language: str) -> types.InlineKeyboardM
             ],
             [
                 types.InlineKeyboardButton(
-                    text=texts.BACK,
+                    text=texts.BACK, icon_custom_emoji_id='5258236805890710909',
                     callback_data=f'poll_view:{poll_id}',
                 )
             ],
@@ -425,7 +425,7 @@ def _build_custom_target_keyboard(poll_id: int, language: str) -> types.InlineKe
                     callback_data=f'poll_custom_target:{poll_id}:direct',
                 ),
             ],
-            [types.InlineKeyboardButton(text=texts.BACK, callback_data=f'poll_send:{poll_id}')],
+            [types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=f'poll_send:{poll_id}')],
         ]
     )
 
@@ -442,7 +442,7 @@ def _build_send_confirmation_keyboard(poll_id: int, target: str, language: str) 
             ],
             [
                 types.InlineKeyboardButton(
-                    text=texts.BACK,
+                    text=texts.BACK, icon_custom_emoji_id='5258236805890710909',
                     callback_data=f'poll_send:{poll_id}',
                 )
             ],
@@ -1146,7 +1146,7 @@ async def confirm_poll_delete(
                 ],
                 [
                     types.InlineKeyboardButton(
-                        text=texts.BACK,
+                        text=texts.BACK, icon_custom_emoji_id='5258236805890710909',
                         callback_data=f'poll_view:{poll_id}',
                     )
                 ],

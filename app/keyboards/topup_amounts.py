@@ -104,5 +104,5 @@ async def get_topup_amount_keyboard(
             row = []
     if row:
         keyboard.append(row)
-    keyboard.append([InlineKeyboardButton(text=texts.BACK, callback_data=back_callback)])
+    keyboard.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=back_callback)])
     return InlineKeyboardMarkup(inline_keyboard=keyboard)

@@ -120,7 +120,7 @@ async def show_support_submenu(callback: types.CallbackQuery, db_user: User, db:
                         text=texts.t('ADMIN_SUPPORT_TICKETS', '🎫 Тикеты поддержки'), callback_data='admin_tickets'
                     )
                 ],
-                [InlineKeyboardButton(text=texts.BACK, callback_data='back_to_menu')],
+                [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='back_to_menu')],
             ]
         )
     await callback.message.edit_text(
@@ -227,7 +227,7 @@ async def show_support_audit(callback: types.CallbackQuery, db_user: User, db: A
     kb_rows = []
     if nav_row:
         kb_rows.append(nav_row)
-    kb_rows.append([InlineKeyboardButton(text=texts.BACK, callback_data='admin_submenu_support')])
+    kb_rows.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_submenu_support')])
     kb = InlineKeyboardMarkup(inline_keyboard=kb_rows)
 
     await callback.message.edit_text('\n'.join(lines), parse_mode='HTML', reply_markup=kb)

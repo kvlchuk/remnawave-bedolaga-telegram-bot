@@ -772,7 +772,7 @@ def _get_trial_payment_keyboard(language: str, can_pay_from_balance: bool = Fals
         keyboard.append([types.InlineKeyboardButton(text=f'💳 {platega_name}', callback_data='trial_payment_platega')])
 
     # Кнопка назад
-    keyboard.append([types.InlineKeyboardButton(text=texts.BACK, callback_data='menu_trial')])
+    keyboard.append([types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_trial')])
 
     return types.InlineKeyboardMarkup(inline_keyboard=keyboard)
 
@@ -789,7 +789,7 @@ async def activate_trial(callback: types.CallbackQuery, db_user: User, db: Async
         keyboard = []
         if support_url:
             keyboard.append([types.InlineKeyboardButton(text='🆘 Обжаловать', url=support_url)])
-        keyboard.append([types.InlineKeyboardButton(text=texts.BACK, callback_data='subscription')])
+        keyboard.append([types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription')])
 
         await callback.message.edit_text(
             f'🚫 <b>Активация подписки ограничена</b>\n\n{reason}\n\n'
@@ -1716,7 +1716,7 @@ async def handle_extend_subscription(
             reply_markup=types.InlineKeyboardMarkup(
                 inline_keyboard=[
                     [types.InlineKeyboardButton(text='📦 Выбрать тариф', callback_data='tariff_switch')],
-                    [types.InlineKeyboardButton(text=texts.BACK, callback_data='menu_subscription')],
+                    [types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_subscription')],
                 ]
             ),
             parse_mode='HTML',
@@ -2199,7 +2199,7 @@ async def confirm_purchase(callback: types.CallbackQuery, state: FSMContext, db_
         keyboard = []
         if support_url:
             keyboard.append([types.InlineKeyboardButton(text='🆘 Обжаловать', url=support_url)])
-        keyboard.append([types.InlineKeyboardButton(text=texts.BACK, callback_data='subscription')])
+        keyboard.append([types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription')])
 
         await callback.message.edit_text(
             f'🚫 <b>Покупка/продление подписки ограничено</b>\n\n{reason}\n\n'
@@ -3792,7 +3792,7 @@ async def handle_trial_payment_method(callback: types.CallbackQuery, db_user: Us
                 reply_markup=InlineKeyboardMarkup(
                     inline_keyboard=[
                         [InlineKeyboardButton(text='💳 Оплатить', url=qr_url)],
-                        [InlineKeyboardButton(text=texts.BACK, callback_data='trial_activate')],
+                        [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='trial_activate')],
                     ]
                 ),
                 parse_mode='HTML',
@@ -3826,7 +3826,7 @@ async def handle_trial_payment_method(callback: types.CallbackQuery, db_user: Us
                 reply_markup=InlineKeyboardMarkup(
                     inline_keyboard=[
                         [InlineKeyboardButton(text='💳 Оплатить', url=payment_result['confirmation_url'])],
-                        [InlineKeyboardButton(text=texts.BACK, callback_data='trial_activate')],
+                        [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='trial_activate')],
                     ]
                 ),
                 parse_mode='HTML',
@@ -3889,7 +3889,7 @@ async def handle_trial_payment_method(callback: types.CallbackQuery, db_user: Us
                                 callback_data=f'check_trial_cryptobot_{pending_subscription.id}',
                             )
                         ],
-                        [InlineKeyboardButton(text=texts.BACK, callback_data='trial_activate')],
+                        [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='trial_activate')],
                     ]
                 ),
                 parse_mode='HTML',
@@ -3927,7 +3927,7 @@ async def handle_trial_payment_method(callback: types.CallbackQuery, db_user: Us
                                 callback_data=f'check_trial_heleket_{pending_subscription.id}',
                             )
                         ],
-                        [InlineKeyboardButton(text=texts.BACK, callback_data='trial_activate')],
+                        [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='trial_activate')],
                     ]
                 ),
                 parse_mode='HTML',
@@ -3964,7 +3964,7 @@ async def handle_trial_payment_method(callback: types.CallbackQuery, db_user: Us
                                 callback_data=f'check_trial_mulenpay_{pending_subscription.id}',
                             )
                         ],
-                        [InlineKeyboardButton(text=texts.BACK, callback_data='trial_activate')],
+                        [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='trial_activate')],
                     ]
                 ),
                 parse_mode='HTML',
@@ -4002,7 +4002,7 @@ async def handle_trial_payment_method(callback: types.CallbackQuery, db_user: Us
                                 callback_data=f'check_trial_pal24_{pending_subscription.id}',
                             )
                         ],
-                        [InlineKeyboardButton(text=texts.BACK, callback_data='trial_activate')],
+                        [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='trial_activate')],
                     ]
                 ),
                 parse_mode='HTML',
@@ -4038,7 +4038,7 @@ async def handle_trial_payment_method(callback: types.CallbackQuery, db_user: Us
                                 callback_data=f'check_trial_wata_{pending_subscription.id}',
                             )
                         ],
-                        [InlineKeyboardButton(text=texts.BACK, callback_data='trial_activate')],
+                        [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='trial_activate')],
                     ]
                 ),
                 parse_mode='HTML',
@@ -4086,7 +4086,7 @@ async def handle_trial_payment_method(callback: types.CallbackQuery, db_user: Us
                                 callback_data=f'check_trial_platega_{pending_subscription.id}',
                             )
                         ],
-                        [InlineKeyboardButton(text=texts.BACK, callback_data='trial_activate')],
+                        [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='trial_activate')],
                     ]
                 ),
                 parse_mode='HTML',
@@ -4441,7 +4441,7 @@ async def handle_simple_subscription_purchase(
                         text='💳 Другие способы оплаты', callback_data='simple_subscription_other_payment_methods'
                     )
                 ],
-                [types.InlineKeyboardButton(text=texts.BACK, callback_data='subscription_purchase')],
+                [types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_purchase')],
             ]
         )
     else:

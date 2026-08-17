@@ -328,7 +328,7 @@ async def prompt_edit_summary_times(
         inline_keyboard=[
             [
                 types.InlineKeyboardButton(
-                    text=texts.BACK,
+                    text=texts.BACK, icon_custom_emoji_id='5258236805890710909',
                     callback_data=f'admin_contest_view_{contest_id}',
                 )
             ]

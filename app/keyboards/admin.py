@@ -71,7 +71,7 @@ def get_admin_main_keyboard(language: str = 'ru') -> InlineKeyboardMarkup:
                     callback_data='admin_payments',
                 ),
             ],
-            [InlineKeyboardButton(text=texts.BACK, callback_data='back_to_menu')],
+            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='back_to_menu')],
         ]
     )
 
@@ -86,7 +86,7 @@ def get_admin_users_submenu_keyboard(language: str = 'ru') -> InlineKeyboardMark
                 InlineKeyboardButton(text=texts.ADMIN_REFERRALS, callback_data='admin_referrals'),
             ],
             [InlineKeyboardButton(text=texts.ADMIN_SUBSCRIPTIONS, callback_data='admin_subscriptions')],
-            [InlineKeyboardButton(text=texts.BACK, callback_data='admin_panel')],
+            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_panel')],
         ]
     )
 
@@ -114,7 +114,7 @@ def get_admin_promo_submenu_keyboard(language: str = 'ru') -> InlineKeyboardMark
                 )
             ],
             [InlineKeyboardButton(text=texts.ADMIN_PROMO_GROUPS, callback_data='admin_promo_groups')],
-            [InlineKeyboardButton(text=texts.BACK, callback_data='admin_panel')],
+            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_panel')],
         ]
     )
 
@@ -147,7 +147,7 @@ def get_admin_communications_submenu_keyboard(language: str = 'ru') -> InlineKey
                     callback_data='user_messages_panel',
                 ),
             ],
-            [InlineKeyboardButton(text=texts.BACK, callback_data='admin_panel')],
+            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_panel')],
         ]
     )
 
@@ -173,7 +173,7 @@ def get_admin_support_submenu_keyboard(language: str = 'ru') -> InlineKeyboardMa
                     callback_data='admin_support_settings',
                 )
             ],
-            [InlineKeyboardButton(text=texts.BACK, callback_data='admin_panel')],
+            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_panel')],
         ]
     )
 
@@ -247,7 +247,7 @@ def get_admin_settings_submenu_keyboard(language: str = 'ru') -> InlineKeyboardM
                     callback_data='admin_remna_config',
                 )
             ],
-            [InlineKeyboardButton(text=texts.BACK, callback_data='admin_panel')],
+            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_panel')],
         ]
     )
 
@@ -265,7 +265,7 @@ def get_admin_system_submenu_keyboard(language: str = 'ru') -> InlineKeyboardMar
             ],
             [InlineKeyboardButton(text=_t(texts, 'ADMIN_SYSTEM_LOGS', '🧾 Логи'), callback_data='admin_system_logs')],
             [InlineKeyboardButton(text=texts.t('ADMIN_REPORTS', '📊 Отчеты'), callback_data='admin_reports')],
-            [InlineKeyboardButton(text=texts.BACK, callback_data='admin_panel')],
+            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_panel')],
         ]
     )
 
@@ -281,7 +281,7 @@ def get_admin_trials_keyboard(language: str = 'ru') -> InlineKeyboardMarkup:
                     callback_data='admin_trials_reset',
                 )
             ],
-            [InlineKeyboardButton(text=texts.BACK, callback_data='admin_panel')],
+            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_panel')],
         ]
     )
 
@@ -306,7 +306,7 @@ def get_admin_reports_keyboard(language: str = 'ru') -> InlineKeyboardMarkup:
                     text=_t(texts, 'ADMIN_REPORTS_LAST_MONTH', '📅 За месяц'), callback_data='admin_reports_monthly'
                 )
             ],
-            [InlineKeyboardButton(text=texts.BACK, callback_data='admin_panel')],
+            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_panel')],
         ]
     )
 
@@ -362,7 +362,7 @@ def get_admin_users_keyboard(language: str = 'ru') -> InlineKeyboardMarkup:
                     callback_data='admin_blocked_users',
                 )
             ],
-            [InlineKeyboardButton(text=texts.BACK, callback_data='admin_submenu_users')],
+            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_submenu_users')],
         ]
     )
 
@@ -396,7 +396,7 @@ def get_admin_users_filters_keyboard(language: str = 'ru') -> InlineKeyboardMark
                     callback_data='admin_users_campaign_filter',
                 )
             ],
-            [InlineKeyboardButton(text=texts.BACK, callback_data='admin_users')],
+            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_users')],
         ]
     )
 
@@ -421,7 +421,7 @@ def get_admin_subscriptions_keyboard(language: str = 'ru') -> InlineKeyboardMark
                 )
             ],
             [InlineKeyboardButton(text=texts.ADMIN_STATISTICS, callback_data='admin_subs_stats')],
-            [InlineKeyboardButton(text=texts.BACK, callback_data='admin_submenu_users')],
+            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_submenu_users')],
         ]
     )
 
@@ -445,7 +445,7 @@ def get_admin_promocodes_keyboard(language: str = 'ru') -> InlineKeyboardMarkup:
                     callback_data='admin_promo_general_stats',
                 )
             ],
-            [InlineKeyboardButton(text=texts.BACK, callback_data='admin_submenu_promo')],
+            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_submenu_promo')],
         ]
     )
 
@@ -469,7 +469,7 @@ def get_admin_campaigns_keyboard(language: str = 'ru') -> InlineKeyboardMarkup:
                     callback_data='admin_campaigns_stats',
                 )
             ],
-            [InlineKeyboardButton(text=texts.BACK, callback_data='admin_submenu_promo')],
+            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_submenu_promo')],
         ]
     )
 
@@ -492,7 +492,7 @@ def get_admin_contests_root_keyboard(language: str = 'ru') -> InlineKeyboardMark
                 )
             ],
             [
-                InlineKeyboardButton(text=texts.BACK, callback_data='admin_submenu_promo'),
+                InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_submenu_promo'),
             ],
         ]
     )
@@ -515,7 +515,7 @@ def get_admin_contests_keyboard(language: str = 'ru') -> InlineKeyboardMarkup:
             ],
             [
                 InlineKeyboardButton(
-                    text=texts.BACK,
+                    text=texts.BACK, icon_custom_emoji_id='5258236805890710909',
                     callback_data='admin_contests',
                 )
             ],
@@ -540,7 +540,7 @@ def get_contest_mode_keyboard(language: str = 'ru') -> InlineKeyboardMarkup:
                     callback_data='admin_contest_mode_registered',
                 )
             ],
-            [InlineKeyboardButton(text=texts.BACK, callback_data='admin_contests_referral')],
+            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_contests_referral')],
         ]
     )
 
@@ -624,7 +624,7 @@ def get_daily_contest_manage_keyboard(
                 ),
             ],
             [
-                InlineKeyboardButton(text=texts.BACK, callback_data='admin_contests_daily'),
+                InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_contests_daily'),
             ],
         ]
     )
@@ -825,7 +825,7 @@ def get_campaign_edit_keyboard(
         )
     # bonus_type == "none" - только базовые кнопки (название и параметр)
 
-    keyboard.append([InlineKeyboardButton(text=texts.BACK, callback_data=f'admin_campaign_manage_{campaign_id}')])
+    keyboard.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=f'admin_campaign_manage_{campaign_id}')])
 
     return InlineKeyboardMarkup(inline_keyboard=keyboard)
 
@@ -853,7 +853,7 @@ def get_campaign_bonus_type_keyboard(language: str = 'ru') -> InlineKeyboardMark
                     text=_t(texts, 'ADMIN_CAMPAIGN_BONUS_NONE', '🔗 Только ссылка'), callback_data='campaign_bonus_none'
                 ),
             ],
-            [InlineKeyboardButton(text=texts.BACK, callback_data='admin_campaigns')],
+            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_campaigns')],
         ]
     )
 
@@ -916,7 +916,7 @@ def get_admin_messages_keyboard(language: str = 'ru') -> InlineKeyboardMarkup:
                     callback_data='admin_pinned_message',
                 )
             ],
-            [InlineKeyboardButton(text=texts.BACK, callback_data='admin_submenu_communications')],
+            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_submenu_communications')],
         ]
     )
 
@@ -968,7 +968,7 @@ def get_pinned_message_keyboard(
                     callback_data='admin_pinned_message_delete',
                 )
             ],
-            [InlineKeyboardButton(text=texts.BACK, callback_data='admin_messages')],
+            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_messages')],
         ]
     )
 
@@ -1025,7 +1025,7 @@ def get_admin_monitoring_keyboard(language: str = 'ru') -> InlineKeyboardMarkup:
                     callback_data='admin_mon_settings',
                 )
             ],
-            [InlineKeyboardButton(text=texts.BACK, callback_data='admin_submenu_settings')],
+            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_submenu_settings')],
         ]
     )
 
@@ -1064,7 +1064,7 @@ def get_admin_remnawave_keyboard(language: str = 'ru') -> InlineKeyboardMarkup:
                     text=_t(texts, 'ADMIN_REMNAWAVE_TRAFFIC', '📈 Трафик'), callback_data='admin_rw_traffic'
                 )
             ],
-            [InlineKeyboardButton(text=texts.BACK, callback_data='admin_submenu_settings')],
+            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_submenu_settings')],
         ]
     )
 
@@ -1095,7 +1095,7 @@ def get_admin_statistics_keyboard(language: str = 'ru') -> InlineKeyboardMarkup:
                     text=_t(texts, 'ADMIN_STATS_SUMMARY', '📊 Общая сводка'), callback_data='admin_stats_summary'
                 )
             ],
-            [InlineKeyboardButton(text=texts.BACK, callback_data='admin_submenu_promo')],
+            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_submenu_promo')],
         ]
     )
 
@@ -1191,7 +1191,7 @@ def get_user_management_keyboard(
             ]
         )
 
-    keyboard.append([InlineKeyboardButton(text=texts.BACK, callback_data=back_callback)])
+    keyboard.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=back_callback)])
 
     return InlineKeyboardMarkup(inline_keyboard=keyboard)
 
@@ -1232,7 +1232,7 @@ def get_user_restrictions_keyboard(
         )
 
     # Кнопка назад
-    keyboard.append([InlineKeyboardButton(text=texts.BACK, callback_data=f'admin_user_manage_{user_id}')])
+    keyboard.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=f'admin_user_manage_{user_id}')])
 
     return InlineKeyboardMarkup(inline_keyboard=keyboard)
 
@@ -1323,7 +1323,7 @@ def get_promocode_type_keyboard(language: str = 'ru') -> InlineKeyboardMarkup:
                     callback_data='promo_type_combo',
                 )
             ],
-            [InlineKeyboardButton(text=texts.BACK, callback_data='admin_promocodes')],
+            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_promocodes')],
         ]
     )
 
@@ -1366,7 +1366,7 @@ def get_promocode_list_keyboard(
                     text=_t(texts, 'ADMIN_PROMOCODES_CREATE', '➕ Создать'), callback_data='admin_promo_create'
                 )
             ],
-            [InlineKeyboardButton(text=texts.BACK, callback_data='admin_promocodes')],
+            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_promocodes')],
         ]
     )
 
@@ -1419,7 +1419,7 @@ def get_broadcast_target_keyboard(language: str = 'ru') -> InlineKeyboardMarkup:
                     callback_data='broadcast_by_tariff',
                 )
             ],
-            [InlineKeyboardButton(text=texts.BACK, callback_data='admin_messages')],
+            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_messages')],
         ]
     )
 
@@ -1470,7 +1470,7 @@ def get_custom_criteria_keyboard(language: str = 'ru') -> InlineKeyboardMarkup:
                     text=_t(texts, 'ADMIN_CRITERIA_DIRECT', '🎯 Прямая регистрация'), callback_data='criteria_direct'
                 )
             ],
-            [InlineKeyboardButton(text=texts.BACK, callback_data='admin_messages')],
+            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_messages')],
         ]
     )
 
@@ -1499,7 +1499,7 @@ def get_broadcast_history_keyboard(page: int, total_pages: int, language: str = 
                     text=_t(texts, 'ADMIN_HISTORY_REFRESH', '🔄 Обновить'), callback_data='admin_msg_history'
                 )
             ],
-            [InlineKeyboardButton(text=texts.BACK, callback_data='admin_messages')],
+            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_messages')],
         ]
     )
 
@@ -1538,7 +1538,7 @@ def get_sync_options_keyboard(language: str = 'ru') -> InlineKeyboardMarkup:
                 text=_t(texts, 'ADMIN_SYNC_RECOMMENDATIONS', '💡 Рекомендации'), callback_data='sync_recommendations'
             )
         ],
-        [InlineKeyboardButton(text=texts.BACK, callback_data='admin_remnawave')],
+        [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_remnawave')],
     ]
 
     return InlineKeyboardMarkup(inline_keyboard=keyboard)
@@ -1622,7 +1622,7 @@ def get_period_selection_keyboard(language: str = 'ru') -> InlineKeyboardMarkup:
                 InlineKeyboardButton(text=_t(texts, 'ADMIN_PERIOD_MONTH', '📅 Месяц'), callback_data='period_month'),
             ],
             [InlineKeyboardButton(text=_t(texts, 'ADMIN_PERIOD_ALL', '📅 Все время'), callback_data='period_all')],
-            [InlineKeyboardButton(text=texts.BACK, callback_data='admin_statistics')],
+            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_statistics')],
         ]
     )
 
@@ -1648,7 +1648,7 @@ def get_node_management_keyboard(node_uuid: str, language: str = 'ru') -> Inline
                     text=_t(texts, 'ADMIN_NODE_STATS', '📊 Статистика'), callback_data=f'node_stats_{node_uuid}'
                 ),
             ],
-            [InlineKeyboardButton(text=texts.BACK, callback_data='admin_rw_nodes')],
+            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_rw_nodes')],
         ]
     )
 
@@ -1678,7 +1678,7 @@ def get_squad_management_keyboard(squad_uuid: str, language: str = 'ru') -> Inli
                     text=_t(texts, 'ADMIN_SQUAD_DELETE', '🗑️ Удалить сквад'), callback_data=f'squad_delete_{squad_uuid}'
                 ),
             ],
-            [InlineKeyboardButton(text=texts.BACK, callback_data='admin_rw_squads')],
+            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_rw_squads')],
         ]
     )
 
@@ -1770,7 +1770,7 @@ def get_monitoring_logs_keyboard(language: str = 'ru') -> InlineKeyboardMarkup:
                     callback_data='admin_mon_clear_logs',
                 ),
             ],
-            [InlineKeyboardButton(text=texts.BACK, callback_data='admin_monitoring')],
+            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_monitoring')],
         ]
     )
 
@@ -1930,7 +1930,7 @@ def get_monitoring_status_keyboard(
     ]
     keyboard.append(test_row)
 
-    keyboard.append([InlineKeyboardButton(text=texts.BACK, callback_data='admin_submenu_settings')])
+    keyboard.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_submenu_settings')])
 
     return InlineKeyboardMarkup(inline_keyboard=keyboard)
 
@@ -1998,7 +1998,7 @@ def get_log_type_filter_keyboard(language: str = 'ru') -> InlineKeyboardMarkup:
                 InlineKeyboardButton(
                     text=_t(texts, 'ADMIN_MONITORING_ALL_LOGS', '📋 Все логи'), callback_data='admin_mon_logs'
                 ),
-                InlineKeyboardButton(text=texts.BACK, callback_data='admin_monitoring'),
+                InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_monitoring'),
             ],
         ]
     )
@@ -2025,7 +2025,7 @@ def get_admin_servers_keyboard(language: str = 'ru') -> InlineKeyboardMarkup:
                     text=_t(texts, 'ADMIN_SERVERS_STATS', '📊 Статистика'), callback_data='admin_servers_stats'
                 ),
             ],
-            [InlineKeyboardButton(text=texts.BACK, callback_data='admin_subscriptions')],
+            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_subscriptions')],
         ]
     )
 
@@ -2072,7 +2072,7 @@ def get_server_edit_keyboard(server_id: int, is_available: bool, language: str =
                 InlineKeyboardButton(
                     text=_t(texts, 'ADMIN_SERVER_DELETE', '🗑️ Удалить'), callback_data=f'admin_server_delete_{server_id}'
                 ),
-                InlineKeyboardButton(text=texts.BACK, callback_data='admin_servers_list'),
+                InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_servers_list'),
             ],
         ]
     )
@@ -2097,7 +2097,7 @@ def get_admin_pagination_keyboard(
 
         keyboard.append(row)
 
-    keyboard.append([InlineKeyboardButton(text=texts.BACK, callback_data=back_callback)])
+    keyboard.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=back_callback)])
 
     return InlineKeyboardMarkup(inline_keyboard=keyboard)
 
@@ -2171,7 +2171,7 @@ def get_maintenance_keyboard(
     keyboard.append(
         [
             InlineKeyboardButton(text=_t(texts, 'ADMIN_REFRESH', '🔄 Обновить'), callback_data='maintenance_panel'),
-            InlineKeyboardButton(text=texts.BACK, callback_data='admin_submenu_settings'),
+            InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_submenu_settings'),
         ]
     )
 
@@ -2186,7 +2186,7 @@ def get_sync_simplified_keyboard(language: str = 'ru') -> InlineKeyboardMarkup:
                 text=_t(texts, 'ADMIN_SYNC_FULL', '🔄 Полная синхронизация'), callback_data='sync_all_users'
             )
         ],
-        [InlineKeyboardButton(text=texts.BACK, callback_data='admin_remnawave')],
+        [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_remnawave')],
     ]
 
     return InlineKeyboardMarkup(inline_keyboard=keyboard)
@@ -2227,7 +2227,7 @@ def get_welcome_text_keyboard(language: str = 'ru', is_enabled: bool = True) -> 
                 text=_t(texts, 'ADMIN_WELCOME_PLACEHOLDERS', '💡 Плейсхолдеры'), callback_data='show_placeholders_help'
             ),
         ],
-        [InlineKeyboardButton(text=texts.BACK, callback_data='admin_submenu_communications')],
+        [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_submenu_communications')],
     ]
 
     return InlineKeyboardMarkup(inline_keyboard=keyboard)

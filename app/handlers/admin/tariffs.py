@@ -119,7 +119,7 @@ def get_tariffs_list_keyboard(
     buttons.append([InlineKeyboardButton(text='➕ Создать тариф', callback_data='admin_tariff_create')])
 
     # Кнопка назад
-    buttons.append([InlineKeyboardButton(text=texts.BACK, callback_data='admin_panel')])
+    buttons.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_panel')])
 
     return InlineKeyboardMarkup(inline_keyboard=buttons)
 
@@ -236,7 +236,7 @@ def get_tariff_view_keyboard(
     buttons.append([InlineKeyboardButton(text='🗑️ Удалить', callback_data=f'admin_tariff_delete:{tariff.id}')])
 
     # Назад к списку
-    buttons.append([InlineKeyboardButton(text=texts.BACK, callback_data='admin_tariffs')])
+    buttons.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_tariffs')])
 
     return InlineKeyboardMarkup(inline_keyboard=buttons)
 
@@ -386,7 +386,7 @@ async def show_tariffs_list(
             '<code>SALES_MODE=tariffs</code>\n\n'
             'Текущий режим: <code>classic</code>',
             reply_markup=InlineKeyboardMarkup(
-                inline_keyboard=[[InlineKeyboardButton(text=texts.BACK, callback_data='admin_panel')]]
+                inline_keyboard=[[InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_panel')]]
             ),
             parse_mode='HTML',
         )
@@ -401,7 +401,7 @@ async def show_tariffs_list(
             reply_markup=InlineKeyboardMarkup(
                 inline_keyboard=[
                     [InlineKeyboardButton(text='➕ Создать тариф', callback_data='admin_tariff_create')],
-                    [InlineKeyboardButton(text=texts.BACK, callback_data='admin_panel')],
+                    [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_panel')],
                 ]
             ),
             parse_mode='HTML',
@@ -1818,7 +1818,7 @@ async def start_edit_tariff_traffic_topup(
             ]
         )
 
-    buttons.append([InlineKeyboardButton(text=texts.BACK, callback_data=f'admin_tariff_view:{tariff_id}')])
+    buttons.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=f'admin_tariff_view:{tariff_id}')])
 
     await callback.message.edit_text(
         f'📈 <b>Докупка трафика для «{html.escape(tariff.name)}»</b>\n\n'
@@ -1903,7 +1903,7 @@ async def toggle_tariff_traffic_topup(
             [InlineKeyboardButton(text='✅ Включить', callback_data=f'admin_tariff_toggle_traffic_topup:{tariff_id}')]
         )
 
-    buttons.append([InlineKeyboardButton(text=texts.BACK, callback_data=f'admin_tariff_view:{tariff_id}')])
+    buttons.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=f'admin_tariff_view:{tariff_id}')])
 
     try:
         await callback.message.edit_text(
@@ -2025,7 +2025,7 @@ async def process_edit_traffic_topup_packages(
             )
         ],
         [InlineKeyboardButton(text='📊 Макс. лимит трафика', callback_data=f'admin_tariff_edit_max_topup:{tariff_id}')],
-        [InlineKeyboardButton(text=texts.BACK, callback_data=f'admin_tariff_view:{tariff_id}')],
+        [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=f'admin_tariff_view:{tariff_id}')],
     ]
 
     await message.answer(
@@ -2142,7 +2142,7 @@ async def process_edit_max_topup_traffic(
             )
         ],
         [InlineKeyboardButton(text='📊 Макс. лимит трафика', callback_data=f'admin_tariff_edit_max_topup:{tariff_id}')],
-        [InlineKeyboardButton(text=texts.BACK, callback_data=f'admin_tariff_view:{tariff_id}')],
+        [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=f'admin_tariff_view:{tariff_id}')],
     ]
 
     await message.answer(
@@ -2260,7 +2260,7 @@ async def delete_tariff_confirmed(
             reply_markup=InlineKeyboardMarkup(
                 inline_keyboard=[
                     [InlineKeyboardButton(text='➕ Создать тариф', callback_data='admin_tariff_create')],
-                    [InlineKeyboardButton(text=texts.BACK, callback_data='admin_panel')],
+                    [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_panel')],
                 ]
             ),
             parse_mode='HTML',
@@ -2324,7 +2324,7 @@ async def start_edit_tariff_squads(
             InlineKeyboardButton(text='✅ Выбрать все', callback_data=f'admin_tariff_select_all_squads:{tariff_id}'),
         ]
     )
-    buttons.append([InlineKeyboardButton(text=texts.BACK, callback_data=f'admin_tariff_view:{tariff_id}')])
+    buttons.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=f'admin_tariff_view:{tariff_id}')])
 
     selected_count = len(current_squads)
 
@@ -2388,7 +2388,7 @@ async def toggle_tariff_squad(
             InlineKeyboardButton(text='✅ Выбрать все', callback_data=f'admin_tariff_select_all_squads:{tariff_id}'),
         ]
     )
-    buttons.append([InlineKeyboardButton(text=texts.BACK, callback_data=f'admin_tariff_view:{tariff_id}')])
+    buttons.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=f'admin_tariff_view:{tariff_id}')])
 
     try:
         await callback.message.edit_text(
@@ -2453,7 +2453,7 @@ async def clear_tariff_squads(
             InlineKeyboardButton(text='✅ Выбрать все', callback_data=f'admin_tariff_select_all_squads:{tariff_id}'),
         ]
     )
-    buttons.append([InlineKeyboardButton(text=texts.BACK, callback_data=f'admin_tariff_view:{tariff_id}')])
+    buttons.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=f'admin_tariff_view:{tariff_id}')])
 
     try:
         await callback.message.edit_text(
@@ -2517,7 +2517,7 @@ async def select_all_tariff_squads(
             InlineKeyboardButton(text='✅ Выбрать все', callback_data=f'admin_tariff_select_all_squads:{tariff_id}'),
         ]
     )
-    buttons.append([InlineKeyboardButton(text=texts.BACK, callback_data=f'admin_tariff_view:{tariff_id}')])
+    buttons.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=f'admin_tariff_view:{tariff_id}')])
 
     try:
         await callback.message.edit_text(
@@ -2586,7 +2586,7 @@ async def start_edit_tariff_promo_groups(
             InlineKeyboardButton(text='🔄 Очистить все', callback_data=f'admin_tariff_clear_promo:{tariff_id}'),
         ]
     )
-    buttons.append([InlineKeyboardButton(text=texts.BACK, callback_data=f'admin_tariff_view:{tariff_id}')])
+    buttons.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=f'admin_tariff_view:{tariff_id}')])
 
     selected_count = len(current_groups)
 
@@ -2655,7 +2655,7 @@ async def toggle_tariff_promo_group(
             InlineKeyboardButton(text='🔄 Очистить все', callback_data=f'admin_tariff_clear_promo:{tariff_id}'),
         ]
     )
-    buttons.append([InlineKeyboardButton(text=texts.BACK, callback_data=f'admin_tariff_view:{tariff_id}')])
+    buttons.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=f'admin_tariff_view:{tariff_id}')])
 
     try:
         await callback.message.edit_text(
@@ -2712,7 +2712,7 @@ async def clear_tariff_promo_groups(
             InlineKeyboardButton(text='🔄 Очистить все', callback_data=f'admin_tariff_clear_promo:{tariff_id}'),
         ]
     )
-    buttons.append([InlineKeyboardButton(text=texts.BACK, callback_data=f'admin_tariff_view:{tariff_id}')])
+    buttons.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=f'admin_tariff_view:{tariff_id}')])
 
     try:
         await callback.message.edit_text(
@@ -2760,7 +2760,7 @@ def get_traffic_reset_mode_keyboard(tariff_id: int, current_mode: str | None, la
         )
 
     # Кнопка назад
-    buttons.append([InlineKeyboardButton(text=texts.BACK, callback_data=f'admin_tariff_view:{tariff_id}')])
+    buttons.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=f'admin_tariff_view:{tariff_id}')])
 
     return InlineKeyboardMarkup(inline_keyboard=buttons)
 

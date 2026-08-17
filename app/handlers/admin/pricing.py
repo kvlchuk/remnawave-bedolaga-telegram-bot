@@ -538,7 +538,7 @@ def _build_settings_section(
     else:
         lines.append(texts.t('ADMIN_PRICING_SECTION_EMPTY', 'Нет параметров для изменения.'))
 
-    keyboard_rows.append([types.InlineKeyboardButton(text=texts.BACK, callback_data='admin_pricing')])
+    keyboard_rows.append([types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_pricing')])
     keyboard = types.InlineKeyboardMarkup(inline_keyboard=keyboard_rows)
     return '\n'.join(lines).strip(), keyboard
 
@@ -598,7 +598,7 @@ def _build_traffic_options_section(language: str) -> tuple[str, types.InlineKeyb
     for i in range(0, len(buttons), 3):
         keyboard_rows.append(buttons[i : i + 3])
 
-    keyboard_rows.append([types.InlineKeyboardButton(text=texts.BACK, callback_data='admin_pricing')])
+    keyboard_rows.append([types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_pricing')])
     keyboard = types.InlineKeyboardMarkup(inline_keyboard=keyboard_rows)
     return '\n'.join(lines), keyboard
 
@@ -667,7 +667,7 @@ def _build_period_options_section(language: str) -> tuple[str, types.InlineKeybo
     for i in range(0, len(renew_buttons), 3):
         keyboard_rows.append(renew_buttons[i : i + 3])
 
-    keyboard_rows.append([types.InlineKeyboardButton(text=texts.BACK, callback_data='admin_pricing')])
+    keyboard_rows.append([types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_pricing')])
     keyboard = types.InlineKeyboardMarkup(inline_keyboard=keyboard_rows)
     return '\n'.join(lines), keyboard
 
@@ -745,7 +745,7 @@ def _build_overview(language: str) -> tuple[str, types.InlineKeyboardMarkup]:
                     callback_data='admin_pricing_section:extra',
                 ),
             ],
-            [types.InlineKeyboardButton(text=texts.BACK, callback_data='admin_panel')],
+            [types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_panel')],
         ]
     )
 
@@ -799,7 +799,7 @@ def _build_section(
             ]
         )
 
-    keyboard_rows.append([types.InlineKeyboardButton(text=texts.BACK, callback_data='admin_pricing')])
+    keyboard_rows.append([types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_pricing')])
 
     keyboard = types.InlineKeyboardMarkup(inline_keyboard=keyboard_rows)
     return '\n'.join(lines), keyboard

@@ -82,7 +82,7 @@ async def handle_autopay_menu(callback: types.CallbackQuery, db_user: User, db: 
                 ]
             )
         back_cb = f'sm:{sub_id}' if sub_id and settings.is_multi_tariff_enabled() else 'menu_subscription'
-        daily_keyboard_rows.append([types.InlineKeyboardButton(text=texts.BACK, callback_data=back_cb)])
+        daily_keyboard_rows.append([types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=back_cb)])
 
         await callback.message.edit_text(
             texts.t(
@@ -409,7 +409,7 @@ async def handle_sbp_recurring_menu(
     keyboard = types.InlineKeyboardMarkup(
         inline_keyboard=[
             [action_button],
-            [types.InlineKeyboardButton(text=texts.BACK, callback_data='subscription_autopay')],
+            [types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_autopay')],
         ]
     )
 
@@ -508,7 +508,7 @@ async def handle_sbp_recurring_enable(
                     url=redirect_url,
                 )
             ],
-            [types.InlineKeyboardButton(text=texts.BACK, callback_data='sbp_recurring_menu')],
+            [types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='sbp_recurring_menu')],
         ]
     )
 

@@ -2495,7 +2495,7 @@ async def start_edit_setting(
             inline_keyboard=[
                 [
                     types.InlineKeyboardButton(
-                        text=texts.BACK,
+                        text=texts.BACK, icon_custom_emoji_id='5258236805890710909',
                         callback_data=(f'botcfg_setting:{group_key}:{category_page}:{settings_page}:{token}'),
                     )
                 ]

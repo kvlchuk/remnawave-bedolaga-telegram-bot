@@ -100,7 +100,7 @@ async def handle_connect_subscription(
                         web_app=types.WebAppInfo(url=subscription_link),
                     )
                 ],
-                [InlineKeyboardButton(text=texts.BACK, callback_data=back_cb)],
+                [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=back_cb)],
             ]
         )
 
@@ -134,7 +134,7 @@ async def handle_connect_subscription(
                         web_app=types.WebAppInfo(url=settings.MINIAPP_CUSTOM_URL),
                     )
                 ],
-                [InlineKeyboardButton(text=texts.BACK, callback_data=back_cb)],
+                [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=back_cb)],
             ]
         )
 
@@ -154,7 +154,7 @@ async def handle_connect_subscription(
         happ_row = get_happ_download_button_row(texts)
         if happ_row:
             rows.append(happ_row)
-        rows.append([InlineKeyboardButton(text=texts.BACK, callback_data=back_cb)])
+        rows.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=back_cb)])
 
         keyboard = InlineKeyboardMarkup(inline_keyboard=rows)
 
@@ -182,7 +182,7 @@ async def handle_connect_subscription(
         happ_row = get_happ_download_button_row(texts)
         if happ_row:
             rows.append(happ_row)
-        rows.append([InlineKeyboardButton(text=texts.BACK, callback_data=back_cb)])
+        rows.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=back_cb)])
 
         keyboard = InlineKeyboardMarkup(inline_keyboard=rows)
 
@@ -216,7 +216,7 @@ async def handle_connect_subscription(
                 ),
                 reply_markup=InlineKeyboardMarkup(
                     inline_keyboard=[
-                        [InlineKeyboardButton(text=texts.BACK, callback_data=back_cb)],
+                        [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=back_cb)],
                     ]
                 ),
                 parse_mode='HTML',
@@ -361,7 +361,7 @@ async def handle_open_subscription_link(
                         else 'subscription_connect',
                     )
                 ],
-                [InlineKeyboardButton(text=texts.BACK, callback_data=back_cb)],
+                [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=back_cb)],
             ]
         ),
         parse_mode='HTML',

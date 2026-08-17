@@ -1548,7 +1548,7 @@ async def _build_user_referrals_view(
             ],
             [
                 InlineKeyboardButton(
-                    text=texts.BACK,
+                    text=texts.BACK, icon_custom_emoji_id='5258236805890710909',
                     callback_data=f'admin_user_manage_{user_id}',
                 )
             ],
@@ -1657,7 +1657,7 @@ async def start_edit_referral_percent(
             ],
             [
                 InlineKeyboardButton(
-                    text=texts.BACK,
+                    text=texts.BACK, icon_custom_emoji_id='5258236805890710909',
                     callback_data=f'admin_user_referrals_{user_id}',
                 )
             ],
@@ -1880,7 +1880,7 @@ async def start_edit_user_referrals(
             inline_keyboard=[
                 [
                     InlineKeyboardButton(
-                        text=texts.BACK,
+                        text=texts.BACK, icon_custom_emoji_id='5258236805890710909',
                         callback_data=f'admin_user_referrals_{user_id}',
                     )
                 ]
