@@ -681,7 +681,7 @@ def get_main_menu_keyboard(
             if settings.is_multi_tariff_enabled()
             else texts.MENU_SUBSCRIPTION
         )
-        paired_buttons.append(InlineKeyboardButton(text=sub_btn_text, callback_data='menu_subscription'))
+        paired_buttons.append(InlineKeyboardButton(text=sub_btn_text, icon_custom_emoji_id='5258185631355378853', callback_data='menu_subscription'))
 
         # Добавляем кнопку докупки трафика для лимитированных подписок
         # В режиме тарифов проверяем tariff_id (детальная проверка в хендлере)
@@ -702,7 +702,7 @@ def get_main_menu_keyboard(
                 )
             )
 
-    keyboard.append([InlineKeyboardButton(text=balance_button_text, callback_data='menu_balance')])
+    keyboard.append([InlineKeyboardButton(text=balance_button_text, icon_custom_emoji_id='5258204546391351475', callback_data='menu_balance')])
 
     show_trial = (
         not has_had_paid_subscription
@@ -731,7 +731,7 @@ def get_main_menu_keyboard(
         subscription_buttons.append(InlineKeyboardButton(text=texts.MENU_TRIAL, callback_data='menu_trial'))
 
     if show_buy:
-        subscription_buttons.append(InlineKeyboardButton(text=texts.MENU_BUY_SUBSCRIPTION, callback_data='menu_buy'))
+        subscription_buttons.append(InlineKeyboardButton(text=texts.MENU_BUY_SUBSCRIPTION, icon_custom_emoji_id='5359719332542718652', callback_data='menu_buy'))
 
     if subscription_buttons:
         paired_buttons.extend(subscription_buttons)
@@ -753,11 +753,11 @@ def get_main_menu_keyboard(
                 paired_buttons.append(button)
 
     # Добавляем кнопки промокода и рефералов, учитывая настройки
-    paired_buttons.append(InlineKeyboardButton(text=texts.MENU_PROMOCODE, callback_data='menu_promocode'))
+    paired_buttons.append(InlineKeyboardButton(text=texts.MENU_PROMOCODE, icon_custom_emoji_id='5296348778012361146', callback_data='menu_promocode'))
 
     # Добавляем кнопку рефералов, только если программа включена
     if settings.is_referral_program_enabled():
-        paired_buttons.append(InlineKeyboardButton(text=texts.MENU_REFERRALS, callback_data='menu_referrals'))
+        paired_buttons.append(InlineKeyboardButton(text=texts.MENU_REFERRALS, icon_custom_emoji_id='5258486128742244085', callback_data='menu_referrals'))
 
     # Добавляем кнопку конкурсов
     if settings.CONTESTS_ENABLED and settings.CONTESTS_BUTTON_VISIBLE:
@@ -773,7 +773,7 @@ def get_main_menu_keyboard(
         support_enabled = settings.SUPPORT_MENU_ENABLED
 
     if support_enabled:
-        paired_buttons.append(InlineKeyboardButton(text=texts.MENU_SUPPORT, callback_data='menu_support'))
+        paired_buttons.append(InlineKeyboardButton(text=texts.MENU_SUPPORT, icon_custom_emoji_id='5260535596941582167', callback_data='menu_support'))
 
     # Добавляем кнопку активации
     if settings.ACTIVATE_BUTTON_VISIBLE:
@@ -782,12 +782,13 @@ def get_main_menu_keyboard(
     paired_buttons.append(
         InlineKeyboardButton(
             text=texts.t('MENU_INFO', 'ℹ️ Инфо'),
+            icon_custom_emoji_id='5258328383183396223',
             callback_data='menu_info',
         )
     )
 
     if settings.is_language_selection_enabled():
-        paired_buttons.append(InlineKeyboardButton(text=texts.MENU_LANGUAGE, callback_data='menu_language'))
+        paired_buttons.append(InlineKeyboardButton(text=texts.MENU_LANGUAGE, icon_custom_emoji_id='5776233299424843260', callback_data='menu_language'))
 
     for i in range(0, len(paired_buttons), 2):
         row = paired_buttons[i : i + 2]
@@ -799,7 +800,7 @@ def get_main_menu_keyboard(
     if is_admin:
         if settings.DEBUG:
             logger.debug('DEBUG KEYBOARD: Админ кнопка ДОБАВЛЕНА')
-        keyboard.append([InlineKeyboardButton(text=texts.MENU_ADMIN, callback_data='admin_panel')])
+        keyboard.append([InlineKeyboardButton(text=texts.MENU_ADMIN, icon_custom_emoji_id='5258011929993026890', callback_data='admin_panel')])
     elif settings.DEBUG:
         logger.debug('DEBUG KEYBOARD: Админ кнопка НЕ добавлена')
     # Moderator access (limited support panel)
@@ -1228,7 +1229,7 @@ def get_subscription_keyboard(
                 # Для обычного тарифа: [Продлить] [Автоплатеж]
                 keyboard.append(
                     [
-                        InlineKeyboardButton(text=texts.MENU_EXTEND_SUBSCRIPTION, callback_data='subscription_extend'),
+                        InlineKeyboardButton(text=texts.MENU_EXTEND_SUBSCRIPTION, icon_custom_emoji_id='5258420634785947640', callback_data='subscription_extend'),
                         InlineKeyboardButton(
                             text=texts.t('AUTOPAY_BUTTON', '💳 Автоплатеж'),
                             callback_data='subscription_autopay',
