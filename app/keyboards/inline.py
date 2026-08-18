@@ -739,6 +739,7 @@ def get_main_menu_keyboard(
         paired_buttons.append(
             InlineKeyboardButton(
                 text=texts.RETURN_TO_SUBSCRIPTION_CHECKOUT,
+                icon_custom_emoji_id='5258236805890710909',
                 callback_data=resume_callback,
             )
         )
@@ -1079,6 +1080,7 @@ def get_insufficient_balance_keyboard(
         return_row = [
             InlineKeyboardButton(
                 text=texts.RETURN_TO_SUBSCRIPTION_CHECKOUT,
+                icon_custom_emoji_id='5258236805890710909',
                 callback_data='return_to_saved_cart',
             )
         ]
@@ -1088,6 +1090,7 @@ def get_insufficient_balance_keyboard(
         return_row = [
             InlineKeyboardButton(
                 text=texts.RETURN_TO_SUBSCRIPTION_CHECKOUT,
+                icon_custom_emoji_id='5258236805890710909',
                 callback_data=resume_callback,
             )
         ]
@@ -1327,7 +1330,7 @@ def get_payment_methods_keyboard_with_cart(
     keyboard.inline_keyboard.insert(
         -1,
         [  # Вставляем перед кнопкой "назад"
-            InlineKeyboardButton(text=texts.RETURN_TO_SUBSCRIPTION_CHECKOUT, callback_data='return_to_saved_cart')
+            InlineKeyboardButton(text=texts.RETURN_TO_SUBSCRIPTION_CHECKOUT, icon_custom_emoji_id='5258236805890710909', callback_data='return_to_saved_cart')
         ],
     )
 
