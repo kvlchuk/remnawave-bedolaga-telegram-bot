@@ -479,6 +479,8 @@ async def show_subscription_info(callback: types.CallbackQuery, db_user: User, d
 
     device_limit_display = Texts.format_device_limit(subscription.device_limit)
 
+    tariff_name_display = html.escape(tariff.name) if tariff else texts.t('SUBSCRIPTION_NO_TARIFF', '—')
+
     message = message_template.format(
         full_name=html.escape(db_user.full_name or ''),
         balance=settings.format_price(db_user.balance_kopeks),
@@ -487,6 +489,7 @@ async def show_subscription_info(callback: types.CallbackQuery, db_user: User, d
         warning=warning_text,
         tariff_info_block=tariff_info_block,
         subscription_type=subscription_type,
+        tariff_name=tariff_name_display,
         end_date=format_local_datetime(subscription.end_date, '%d.%m.%Y %H:%M'),
         time_left=time_left_text,
         traffic=traffic_used_display,
