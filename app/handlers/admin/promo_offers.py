@@ -957,7 +957,10 @@ async def _render_squad_selection(
             texts.t('ADMIN_PROMO_OFFER_NO_SQUADS_AVAILABLE', '❌ Доступные серверы не найдены.'),
             reply_markup=InlineKeyboardMarkup(
                 inline_keyboard=[
-                    [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=f'promo_offer_squad_back_{template.id}')]
+                    [
+                        InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                        InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=f'promo_offer_squad_back_{template.id}'),
+                    ]
                 ]
             ),
         )
@@ -1877,7 +1880,10 @@ async def show_selected_user_details(
                 callback_data=f'promo_offer_send_user_back_{template_id}',
             )
         ],
-        [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=f'promo_offer_{template_id}')],
+        [
+            InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+            InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=f'promo_offer_{template_id}'),
+        ],
     ]
 
     await callback.message.edit_text(

@@ -357,7 +357,10 @@ async def show_my_tickets(callback: types.CallbackQuery, db_user: User, db: Asyn
                             text=texts.t('VIEW_CLOSED_TICKETS', '🟢 Закрытые тикеты'), callback_data='my_tickets_closed'
                         )
                     ],
-                    [types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_support')],
+                    [
+                        types.InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                        types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_support'),
+                    ],
                 ]
             ),
         )
@@ -415,7 +418,10 @@ async def show_my_tickets_closed(callback: types.CallbackQuery, db_user: User, d
                             text=texts.t('BACK_TO_OPEN_TICKETS', '🔴 Открытые тикеты'), callback_data='my_tickets'
                         )
                     ],
-                    [types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_support')],
+                    [
+                        types.InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                        types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_support'),
+                    ],
                 ]
             ),
         )

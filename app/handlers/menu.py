@@ -422,7 +422,10 @@ async def show_promo_groups_info(
     promo_groups = await get_auto_assign_promo_groups(db)
 
     keyboard = types.InlineKeyboardMarkup(
-        inline_keyboard=[[types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_info')]]
+        inline_keyboard=[[
+            types.InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+            types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_info'),
+        ]]
     )
 
     if not promo_groups:
@@ -602,7 +605,10 @@ async def show_faq_pages(
             ]
         )
 
-    buttons.append([types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_info')])
+    buttons.append([
+        types.InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+        types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_info'),
+    ])
 
     await callback.message.edit_text(
         caption,

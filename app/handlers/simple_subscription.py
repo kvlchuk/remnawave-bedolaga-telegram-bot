@@ -53,7 +53,10 @@ async def start_simple_subscription_purchase(
         keyboard = []
         if support_url:
             keyboard.append([types.InlineKeyboardButton(text='🆘 Обжаловать', url=support_url)])
-        keyboard.append([types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription')])
+        keyboard.append([
+            types.InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+            types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription'),
+        ])
 
         await callback.message.edit_text(
             f'🚫 <b>Покупка подписки ограничена</b>\n\n{reason}\n\n'
@@ -201,7 +204,10 @@ async def start_simple_subscription_purchase(
                     text='✅ Подтвердить покупку', callback_data='simple_subscription_confirm_purchase'
                 )
             ],
-            [types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_purchase')],
+            [
+                types.InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_purchase'),
+            ],
         ]
         keyboard = types.InlineKeyboardMarkup(inline_keyboard=keyboard_rows)
     else:
@@ -306,7 +312,10 @@ def _get_simple_subscription_payment_keyboard(language: str) -> types.InlineKeyb
         keyboard.append([types.InlineKeyboardButton(text='💳 WATA', callback_data='simple_subscription_wata')])
 
     # Кнопка назад
-    keyboard.append([types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_purchase')])
+    keyboard.append([
+        types.InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+        types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_purchase'),
+    ])
 
     return types.InlineKeyboardMarkup(inline_keyboard=keyboard)
 
@@ -1042,7 +1051,10 @@ async def handle_simple_subscription_payment_method(
                 ]
             )
             keyboard_buttons.append(
-                [types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_purchase')]
+                [
+                    types.InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                    types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_purchase'),
+                ]
             )
 
             keyboard = types.InlineKeyboardMarkup(inline_keyboard=keyboard_buttons)
@@ -1188,7 +1200,10 @@ async def handle_simple_subscription_payment_method(
                             callback_data=f'check_simple_cryptobot_{crypto_result["local_payment_id"]}',
                         )
                     ],
-                    [types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_purchase')],
+                    [
+                        types.InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                        types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_purchase'),
+                    ],
                 ]
             )
 
@@ -1282,7 +1297,10 @@ async def handle_simple_subscription_payment_method(
                             callback_data=f'check_simple_heleket_{local_payment_id}',
                         )
                     ],
-                    [types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_purchase')],
+                    [
+                        types.InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                        types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_purchase'),
+                    ],
                 ]
             )
 
@@ -1386,7 +1404,10 @@ async def handle_simple_subscription_payment_method(
                             callback_data=f'check_simple_mulenpay_{local_payment_id}',
                         )
                     ],
-                    [types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_purchase')],
+                    [
+                        types.InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                        types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_purchase'),
+                    ],
                 ]
             )
 
@@ -1574,7 +1595,10 @@ async def handle_simple_subscription_payment_method(
                         callback_data=f'check_simple_pal24_{local_payment_id}',
                     )
                 ],
-                [types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_purchase')],
+                [
+                    types.InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                    types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_purchase'),
+                ],
             ]
 
             keyboard = types.InlineKeyboardMarkup(inline_keyboard=keyboard_rows)
@@ -1652,7 +1676,10 @@ async def handle_simple_subscription_payment_method(
                             callback_data=f'check_simple_wata_{local_payment_id}',
                         )
                     ],
-                    [types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_purchase')],
+                    [
+                        types.InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                        types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_purchase'),
+                    ],
                 ]
             )
 
@@ -1808,7 +1835,10 @@ async def check_simple_pal24_payment_status(
                         callback_data=f'check_simple_pal24_{local_payment_id}',
                     )
                 ],
-                [types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_purchase')],
+                [
+                    types.InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                    types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_purchase'),
+                ],
             ]
         )
 
@@ -1895,7 +1925,10 @@ async def check_simple_mulenpay_payment_status(
                     callback_data=f'check_simple_mulenpay_{local_payment_id}',
                 )
             ],
-            [types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_purchase')],
+            [
+                types.InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_purchase'),
+            ],
         ]
     )
 
@@ -1965,7 +1998,10 @@ async def check_simple_cryptobot_payment_status(
                     callback_data=f'check_simple_cryptobot_{local_payment_id}',
                 )
             ],
-            [types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_purchase')],
+            [
+                types.InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_purchase'),
+            ],
         ]
     )
 
@@ -2051,7 +2087,10 @@ async def check_simple_heleket_payment_status(
                     callback_data=f'check_simple_heleket_{local_payment_id}',
                 )
             ],
-            [types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_purchase')],
+            [
+                types.InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_purchase'),
+            ],
         ]
     )
 
@@ -2114,7 +2153,10 @@ async def check_simple_wata_payment_status(
                     callback_data=f'check_simple_wata_{local_payment_id}',
                 )
             ],
-            [types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_purchase')],
+            [
+                types.InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_purchase'),
+            ],
         ]
     )
 

@@ -425,7 +425,10 @@ def _build_custom_target_keyboard(poll_id: int, language: str) -> types.InlineKe
                     callback_data=f'poll_custom_target:{poll_id}:direct',
                 ),
             ],
-            [types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=f'poll_send:{poll_id}')],
+            [
+                types.InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=f'poll_send:{poll_id}'),
+            ],
         ]
     )
 

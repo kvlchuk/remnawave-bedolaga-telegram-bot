@@ -344,8 +344,9 @@ def _connect_link(subscription, texts) -> str:
     url = _connect_url(subscription)
     if not url:
         return ''
-    label = _rich_text(texts.t('MAIN_MENU_RICH_CONNECT', '⚡ Подключить'))
-    return f'<a href="{html.escape(url, quote=True)}"><b>{label}</b></a>'
+    icon = _rich_text(texts.t('MAIN_MENU_RICH_CONNECT_ICON', '<tg-emoji emoji-id="5884428842780594914">⚡</tg-emoji>'))
+    label = _rich_text(texts.t('MAIN_MENU_RICH_CONNECT', 'Подключить'))
+    return f'{icon} <a href="{html.escape(url, quote=True)}"><b>{label}</b></a>'
 
 
 def _trial_offer_link(user: User, texts) -> str:
@@ -375,13 +376,14 @@ def _trial_offer_link(user: User, texts) -> str:
     if not url:
         return ''
 
-    label = _rich_text(texts.t('MAIN_MENU_RICH_TRIAL_BUTTON', '🚀 Активировать триал'))
-    return f'<a href="{html.escape(url, quote=True)}"><b>{label}</b></a>'
+    icon = _rich_text(texts.t('MAIN_MENU_RICH_TRIAL_ICON', '<tg-emoji emoji-id="5258185631355378853">⭐️</tg-emoji>'))
+    label = _rich_text(texts.t('MAIN_MENU_RICH_TRIAL_BUTTON', 'Активировать триал'))
+    return f'{icon} <a href="{html.escape(url, quote=True)}"><b>{label}</b></a>'
 
 
 def _build_subscriptions_table(subscriptions, texts) -> str:
     if not subscriptions:
-        return f'<p>{_rich_text(texts.t("SUB_STATUS_NONE", "❌ Отсутствует"))}</p>'
+        return f'<blockquote>{_rich_text(texts.t("SUB_STATUS_NONE", "❌ Отсутствует"))}</blockquote>'
 
     current_time = datetime.now(UTC)
     header = (
@@ -441,7 +443,7 @@ async def _build_single_subscription_block(user: User, texts, db: AsyncSession) 
 
     subscription = getattr(user, 'subscription', None)
     if not subscription:
-        return f'<p>{_rich_text(texts.t("SUB_STATUS_NONE", "❌ Отсутствует"))}</p>'
+        return f'<blockquote>{_rich_text(texts.t("SUB_STATUS_NONE", "❌ Отсутствует"))}</blockquote>'
 
     is_daily_tariff = False
     tariff_line = ''
@@ -456,10 +458,19 @@ async def _build_single_subscription_block(user: User, texts, db: AsyncSession) 
             tariff_template = texts.t('MAIN_MENU_RICH_TARIFF', '📦 Тариф: {tariff}')
             tariff_line = _rich_text(tariff_template).replace('{tariff}', f'<b>{html.escape(tariff.name)}</b>')
 
-    status_text = _get_subscription_status(user, texts, is_daily_tariff)
-    lines = [_rich_text(line) for line in status_text.split('\n') if line.strip()]
+    lines: list[str] = []
     if tariff_line:
         lines.append(tariff_line)
+
+    actual_status_for_vpn = (subscription.actual_status or '').lower()
+    vpn_active = actual_status_for_vpn in {'active', 'trial', 'limited'}
+    vpn_status_template = texts.t('MAIN_MENU_RICH_VPN_STATUS', '🔑 VPN: {status}')
+    vpn_status_value = (
+        texts.t('MAIN_MENU_RICH_VPN_ACTIVE', '✅ Активен')
+        if vpn_active
+        else texts.t('MAIN_MENU_RICH_VPN_INACTIVE', '❌ Неактивен')
+    )
+    lines.append(_rich_text(vpn_status_template).replace('{status}', vpn_status_value))
 
     current_time = datetime.now(UTC)
     end_date = getattr(subscription, 'end_date', None)
@@ -468,11 +479,10 @@ async def _build_single_subscription_block(user: User, texts, db: AsyncSession) 
     if not is_daily_tariff and end_date and end_date > current_time and actual_status in {'active', 'trial'}:
         seconds_left = (end_date - current_time).total_seconds()
         total_seconds = (end_date - start_date).total_seconds() if start_date else 0
-        relative_template = texts.t('MAIN_MENU_RICH_EXPIRES_RELATIVE', '⏳ истекает {when}')
         days_left_text = texts.t('MAIN_MENU_RICH_DAYS_LEFT', 'осталось {days} дн.').replace(
             '{days}', str(max((end_date - current_time).days, 0))
         )
-        relative_line = _rich_text(relative_template).replace('{when}', _tg_time(end_date, 'r', days_left_text))
+        relative_line = _rich_text(days_left_text)
         lines.append(f'<code>{_progress_bar(seconds_left, total_seconds)}</code> {relative_line}')
 
     if actual_status in {'active', 'trial', 'limited'}:
@@ -482,8 +492,17 @@ async def _build_single_subscription_block(user: User, texts, db: AsyncSession) 
         )
         device_limit = getattr(subscription, 'device_limit', None)
         if device_limit is not None:
+            devices_count_display = Texts.format_device_limit(device_limit)
+            try:
+                from app.handlers.subscription.devices import get_current_devices_count
+
+                connected_count = await get_current_devices_count(user, subscription)
+                if connected_count and connected_count != '—':
+                    devices_count_display = f'{connected_count}/{device_limit}'
+            except Exception as devices_error:
+                logger.debug('Не удалось получить количество подключённых устройств', error=str(devices_error))
             devices_template = texts.t('MAIN_MENU_RICH_DEVICES', '📱 Устройства: {devices}')
-            lines.append(_rich_text(devices_template).replace('{devices}', Texts.format_device_limit(device_limit)))
+            lines.append(_rich_text(devices_template).replace('{devices}', devices_count_display))
         connect_link = _connect_link(subscription, texts)
         if connect_link:
             lines.append(connect_link)
@@ -505,8 +524,13 @@ async def build_main_menu_rich_html(user: User, texts, db: AsyncSession) -> str:
         blocks.append(f'<img src="{html.escape(logo_url, quote=True)}"/>')
 
     user_name = html.escape(user.full_name or '')
-    blocks.append(f'<h4>👤 {user_name}</h4>')
-    blocks.append('<hr/>')
+    blocks.append(f'<p><b>Приветствую, {user_name}!</b></p>')
+
+    profile_id_line = _rich_text(texts.t('MAIN_MENU_RICH_PROFILE_ID', '<tg-emoji emoji-id="6032693626394382504">🆔</tg-emoji> ID: {id}')).replace(
+        '{id}', str(user.telegram_id)
+    )
+    blocks.append('<blockquote>' + profile_id_line + '</blockquote>')
+    blocks.append('<p>\u200b</p>')
 
     if settings.is_multi_tariff_enabled():
         heading = texts.t('MAIN_MENU_RICH_SUBSCRIPTIONS_HEADING', '📱 Подписки')
@@ -524,16 +548,12 @@ async def build_main_menu_rich_html(user: User, texts, db: AsyncSession) -> str:
             blocks.append(subscription_block)
     else:
         heading = texts.t('MAIN_MENU_RICH_SUBSCRIPTION_HEADING', '📱 Подписка')
-        blocks.append(f'<h6>{_rich_text(heading)}</h6>')
+        blocks.append(f'<p><b>{_rich_text(heading)}</b></p>')
         blocks.append(await _build_single_subscription_block(user, texts, db))
 
     trial_link = _trial_offer_link(user, texts)
     if trial_link:
         blocks.append(f'<p>{trial_link}</p>')
-
-    balance_template = texts.t('MAIN_MENU_RICH_BALANCE', '💰 Баланс: {balance}')
-    balance_value = f'<b>{html.escape(settings.format_price(user.balance_kopeks))}</b>'
-    blocks.append(f'<p>{_rich_text(balance_template).replace("{balance}", balance_value)}</p>')
 
     hint_sections: list[str] = []
     try:
@@ -567,8 +587,15 @@ async def build_main_menu_rich_html(user: User, texts, db: AsyncSession) -> str:
         blocks.append(f'<blockquote>{random_message_html}</blockquote>')
 
     blocks.append('<hr/>')
-    action_prompt = texts.t('MAIN_MENU_ACTION_PROMPT', 'Выберите действие:')
-    blocks.append(f'<footer>{_rich_text(action_prompt)}</footer>')
+
+    cabinet_url = settings._normalized_cabinet_url()
+    if cabinet_url:
+        cabinet_label = texts.t('MAIN_MENU_RICH_CABINET_LABEL', '<tg-emoji emoji-id="5776233299424843260">🌐</tg-emoji> Личный кабинет:')
+        cabinet_display = cabinet_url.replace('https://', '').replace('http://', '')
+        blocks.append(
+            f'<p>{_rich_text(cabinet_label)} '
+            f'<a href="{html.escape(cabinet_url, quote=True)}">{html.escape(cabinet_display)}</a></p>'
+        )
 
     return ''.join(blocks)
 

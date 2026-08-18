@@ -224,7 +224,10 @@ async def start_set_sla_minutes(callback: types.CallbackQuery, db_user: User, db
         ),
         parse_mode='HTML',
         reply_markup=types.InlineKeyboardMarkup(
-            inline_keyboard=[[types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_support_settings')]]
+            inline_keyboard=[[
+                types.InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_support_settings'),
+            ]]
         ),
     )
     await state.set_state(SupportAdvancedStates.waiting_for_sla_minutes)
@@ -268,7 +271,10 @@ async def start_add_moderator(callback: types.CallbackQuery, db_user: User, db: 
         ),
         parse_mode='HTML',
         reply_markup=types.InlineKeyboardMarkup(
-            inline_keyboard=[[types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_support_settings')]]
+            inline_keyboard=[[
+                types.InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_support_settings'),
+            ]]
         ),
     )
     await state.set_state(SupportAdvancedStates.waiting_for_moderator_id)
@@ -286,7 +292,10 @@ async def start_remove_moderator(callback: types.CallbackQuery, db_user: User, d
         ),
         parse_mode='HTML',
         reply_markup=types.InlineKeyboardMarkup(
-            inline_keyboard=[[types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_support_settings')]]
+            inline_keyboard=[[
+                types.InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_support_settings'),
+            ]]
         ),
     )
     await state.set_state(SupportAdvancedStates.waiting_for_moderator_id)
@@ -350,7 +359,10 @@ async def list_moderators(callback: types.CallbackQuery, db_user: User, db: Asyn
         + '\n'.join([f'• <code>{tid}</code>' for tid in moderators])
     )
     markup = types.InlineKeyboardMarkup(
-        inline_keyboard=[[types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_support_settings')]]
+        inline_keyboard=[[
+            types.InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+            types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_support_settings'),
+        ]]
     )
     await callback.message.edit_text(text, parse_mode='HTML', reply_markup=markup)
     await callback.answer()

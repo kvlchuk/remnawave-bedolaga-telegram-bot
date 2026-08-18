@@ -616,7 +616,10 @@ async def start_create_promo_group(
     await callback.message.edit_text(
         texts.t('ADMIN_PROMO_GROUP_CREATE_NAME_PROMPT', 'Введите название новой промогруппы:'),
         reply_markup=types.InlineKeyboardMarkup(
-            inline_keyboard=[[types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_promo_groups')]]
+            inline_keyboard=[[
+                types.InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_promo_groups'),
+            ]]
         ),
     )
     await callback.answer()
@@ -1242,7 +1245,10 @@ async def show_promo_group_members(
         )
         keyboard.extend(pagination.inline_keyboard)
 
-    keyboard.append([types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=f'promo_group_manage_{group_id}')])
+    keyboard.append([
+        types.InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+        types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=f'promo_group_manage_{group_id}'),
+    ])
 
     await callback.message.edit_text(
         f'{title}\n\n{body}',
@@ -1312,7 +1318,10 @@ async def delete_promo_group_confirmed(
     await callback.message.edit_text(
         texts.t('ADMIN_PROMO_GROUP_DELETED', 'Промогруппа «{name}» удалена.').format(name=html.escape(group.name)),
         reply_markup=types.InlineKeyboardMarkup(
-            inline_keyboard=[[types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_promo_groups')]]
+            inline_keyboard=[[
+                types.InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_promo_groups'),
+            ]]
         ),
     )
     await callback.answer()

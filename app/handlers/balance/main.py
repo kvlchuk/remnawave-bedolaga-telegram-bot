@@ -315,7 +315,10 @@ async def show_balance_history(callback: types.CallbackQuery, db_user: User, db:
         pagination_row = get_pagination_keyboard(page, total_pages, 'balance_history', db_user.language)
         keyboard.extend(pagination_row)
 
-    keyboard.append([types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_balance')])
+    keyboard.append([
+        types.InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+        types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_balance'),
+    ])
 
     await callback.message.edit_text(
         text, reply_markup=types.InlineKeyboardMarkup(inline_keyboard=keyboard), parse_mode='HTML'
@@ -343,7 +346,10 @@ async def show_payment_methods(callback: types.CallbackQuery, db_user: User, db:
         keyboard = []
         if support_url:
             keyboard.append([types.InlineKeyboardButton(text='🆘 Обжаловать', url=support_url)])
-        keyboard.append([types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_balance')])
+        keyboard.append([
+            types.InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+            types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_balance'),
+        ])
 
         await callback.message.edit_text(
             f'🚫 <b>Пополнение ограничено</b>\n\n{reason}\n\n'
@@ -509,7 +515,10 @@ async def request_support_topup(callback: types.CallbackQuery, db_user: User):
                     text='💬 Написать в поддержку', url=settings.get_support_contact_url() or 'https://t.me/'
                 )
             ],
-            [types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='balance_topup')],
+            [
+                types.InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                types.InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='balance_topup'),
+            ],
         ]
     )
 

@@ -241,7 +241,10 @@ def get_tariffs_keyboard(
         else:
             buttons.append([InlineKeyboardButton(text=tariff.name, callback_data=f'tariff_select:{tariff.id}')])
 
-    buttons.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='back_to_menu')])
+    buttons.append([
+        InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+        InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_start'),
+    ])
 
     return InlineKeyboardMarkup(inline_keyboard=buttons)
 
@@ -274,7 +277,10 @@ def get_tariff_periods_keyboard(
         button_text = f'{format_period(period)} — {price_text}'
         buttons.append([InlineKeyboardButton(text=button_text, callback_data=f'tariff_period:{tariff.id}:{period}')])
 
-    buttons.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='tariff_list')])
+    buttons.append([
+        InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+        InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='tariff_list'),
+    ])
 
     return InlineKeyboardMarkup(inline_keyboard=buttons)
 
@@ -310,7 +316,10 @@ def get_tariff_periods_keyboard_with_traffic(
             [InlineKeyboardButton(text=button_text, callback_data=f'tariff_period_traffic:{tariff.id}:{period}')]
         )
 
-    buttons.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='tariff_list')])
+    buttons.append([
+        InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+        InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='tariff_list'),
+    ])
 
     return InlineKeyboardMarkup(inline_keyboard=buttons)
 
@@ -351,7 +360,10 @@ def get_tariff_confirm_keyboard(
                 )
             ]
         )
-    buttons.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=f'tariff_select:{tariff_id}')])
+    buttons.append([
+        InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+        InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=f'tariff_select:{tariff_id}'),
+    ])
     return InlineKeyboardMarkup(inline_keyboard=buttons)
 
 
@@ -485,7 +497,10 @@ def get_daily_tariff_confirm_keyboard(
                 )
             ]
         )
-    buttons.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='tariff_list')])
+    buttons.append([
+        InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+        InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='tariff_list'),
+    ])
     return InlineKeyboardMarkup(inline_keyboard=buttons)
 
 
@@ -499,7 +514,10 @@ def get_daily_tariff_insufficient_balance_keyboard(
         inline_keyboard=[
             [InlineKeyboardButton(text=texts.t('BALANCE_TOPUP', '💳 Пополнить баланс'), callback_data='balance_topup')],
             *_sbp_purchase_rows(tariff_id, texts),
-            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='tariff_list')],
+            [
+                InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='tariff_list'),
+            ],
         ]
     )
 
@@ -593,7 +611,10 @@ def get_custom_tariff_keyboard(
     )
 
     # Кнопка назад
-    buttons.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='tariff_list')])
+    buttons.append([
+        InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+        InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='tariff_list'),
+    ])
 
     return InlineKeyboardMarkup(inline_keyboard=buttons)
 
@@ -749,7 +770,7 @@ async def show_tariffs_list(
                 '😔 <b>Нет доступных тарифов</b>\n\nК сожалению, сейчас нет тарифов для покупки.',
             ),
             reply_markup=InlineKeyboardMarkup(
-                inline_keyboard=[[InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='back_to_menu')]]
+                inline_keyboard=[[InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_start')]]
             ),
         )
         await callback.answer()
@@ -2460,7 +2481,10 @@ def get_tariff_extend_keyboard(
             ]
         )
 
-    buttons.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_subscription')])
+    buttons.append([
+        InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+        InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_subscription'),
+    ])
 
     return InlineKeyboardMarkup(inline_keyboard=buttons)
 
@@ -2481,7 +2505,10 @@ def get_tariff_extend_confirm_keyboard(
                     callback_data=f'tariff_ext_confirm:{subscription_id}:{tariff_id}:{period}',
                 )
             ],
-            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_extend')],
+            [
+                InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_extend'),
+            ],
         ]
     )
 
@@ -2809,7 +2836,10 @@ async def select_tariff_extend_period(
                             text=texts.t('BALANCE_TOPUP', '💳 Пополнить баланс'), callback_data='balance_topup'
                         )
                     ],
-                    [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_extend')],
+                    [
+                        InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                        InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_extend'),
+                    ],
                 ]
             ),
             parse_mode='HTML',
@@ -3146,7 +3176,10 @@ def get_tariff_switch_keyboard(
 
         buttons.append([InlineKeyboardButton(text=tariff.name, callback_data=f'tariff_sw_select:{tariff.id}')])
 
-    buttons.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_subscription')])
+    buttons.append([
+        InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+        InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_subscription'),
+    ])
 
     return InlineKeyboardMarkup(inline_keyboard=buttons)
 
@@ -3179,7 +3212,10 @@ def get_tariff_switch_periods_keyboard(
         button_text = f'{format_period(period)} — {price_text}'
         buttons.append([InlineKeyboardButton(text=button_text, callback_data=f'tariff_sw_period:{tariff.id}:{period}')])
 
-    buttons.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='tariff_switch')])
+    buttons.append([
+        InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+        InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='tariff_switch'),
+    ])
 
     return InlineKeyboardMarkup(inline_keyboard=buttons)
 
@@ -3199,7 +3235,10 @@ def get_tariff_switch_confirm_keyboard(
                     callback_data=f'tariff_sw_confirm:{tariff_id}:{period}',
                 )
             ],
-            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=f'tariff_sw_select:{tariff_id}')],
+            [
+                InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=f'tariff_sw_select:{tariff_id}'),
+            ],
         ]
     )
 
@@ -3214,7 +3253,10 @@ def get_tariff_switch_insufficient_balance_keyboard(
     return InlineKeyboardMarkup(
         inline_keyboard=[
             [InlineKeyboardButton(text=texts.t('BALANCE_TOPUP', '💳 Пополнить баланс'), callback_data='balance_topup')],
-            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=f'tariff_sw_select:{tariff_id}')],
+            [
+                InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=f'tariff_sw_select:{tariff_id}'),
+            ],
         ]
     )
 
@@ -3252,7 +3294,10 @@ async def show_tariff_switch_list(
                             text=texts.t('BUY_TARIFF_BUTTON', '📦 Купить тариф'), callback_data='menu_buy'
                         )
                     ],
-                    [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_subscription')],
+                    [
+                        InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                        InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_subscription'),
+                    ],
                 ]
             ),
             parse_mode='HTML',
@@ -3445,7 +3490,10 @@ async def select_tariff_switch(
                                 callback_data=f'daily_tariff_switch_confirm:{tariff_id}',
                             )
                         ],
-                        [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='tariff_switch')],
+                        [
+                            InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                            InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='tariff_switch'),
+                        ],
                     ]
                 ),
                 parse_mode='HTML',
@@ -3476,7 +3524,10 @@ async def select_tariff_switch(
                                 text=texts.t('BALANCE_TOPUP', '💳 Пополнить баланс'), callback_data='balance_topup'
                             )
                         ],
-                        [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='tariff_switch')],
+                        [
+                            InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                            InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='tariff_switch'),
+                        ],
                     ]
                 ),
                 parse_mode='HTML',
@@ -4341,7 +4392,10 @@ def get_instant_switch_keyboard(
 
         buttons.append([InlineKeyboardButton(text=btn_text, callback_data=f'instant_sw_preview:{tariff.id}')])
 
-    buttons.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_subscription')])
+    buttons.append([
+        InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+        InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_subscription'),
+    ])
 
     return InlineKeyboardMarkup(inline_keyboard=buttons)
 
@@ -4360,7 +4414,10 @@ def get_instant_switch_confirm_keyboard(
                     callback_data=f'instant_sw_confirm:{tariff_id}',
                 )
             ],
-            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='instant_switch')],
+            [
+                InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='instant_switch'),
+            ],
         ]
     )
 
@@ -4374,7 +4431,10 @@ def get_instant_switch_insufficient_balance_keyboard(
     return InlineKeyboardMarkup(
         inline_keyboard=[
             [InlineKeyboardButton(text=texts.t('BALANCE_TOPUP', '💳 Пополнить баланс'), callback_data='balance_topup')],
-            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='instant_switch')],
+            [
+                InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='instant_switch'),
+            ],
         ]
     )
 
@@ -4438,7 +4498,10 @@ async def show_instant_switch_list(
                             text=texts.t('BUY_TARIFF_BUTTON', '📦 Купить тариф'), callback_data='menu_buy'
                         )
                     ],
-                    [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_subscription')],
+                    [
+                        InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                        InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_subscription'),
+                    ],
                 ]
             ),
             parse_mode='HTML',
@@ -4797,7 +4860,10 @@ async def purchase_tariff_with_lava(
         buttons.append(
             [InlineKeyboardButton(text=texts.t('LAVA_RECURRING_PAY_BUTTON', '💳 Оплатить'), url=redirect_url)]
         )
-    buttons.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='tariff_list')])
+    buttons.append([
+        InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+        InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='tariff_list'),
+    ])
 
     await callback.message.edit_text(text, reply_markup=InlineKeyboardMarkup(inline_keyboard=buttons))
 
@@ -5483,7 +5549,10 @@ async def purchase_tariff_with_sbp(
                 )
             ]
         )
-    buttons.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='tariff_list')])
+    buttons.append([
+        InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+        InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='tariff_list'),
+    ])
 
     await callback.message.edit_text(text, reply_markup=InlineKeyboardMarkup(inline_keyboard=buttons))
     await callback.answer()

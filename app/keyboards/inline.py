@@ -749,11 +749,10 @@ def get_main_menu_keyboard(
                 paired_buttons.append(button)
 
     # Добавляем кнопки промокода и рефералов, учитывая настройки
-    paired_buttons.append(InlineKeyboardButton(text=texts.MENU_PROMOCODE, icon_custom_emoji_id='5296348778012361146', callback_data='menu_promocode'))
 
     # Добавляем кнопку рефералов, только если программа включена
     if settings.is_referral_program_enabled():
-        paired_buttons.append(InlineKeyboardButton(text=texts.MENU_REFERRALS, icon_custom_emoji_id='5258486128742244085', callback_data='menu_referrals'))
+        keyboard.append([InlineKeyboardButton(text=texts.MENU_REFERRALS, icon_custom_emoji_id='5258486128742244085', callback_data='menu_referrals')])
 
     # Добавляем кнопку конкурсов
     if settings.CONTESTS_ENABLED and settings.CONTESTS_BUTTON_VISIBLE:
@@ -769,19 +768,12 @@ def get_main_menu_keyboard(
         support_enabled = settings.SUPPORT_MENU_ENABLED
 
     if support_enabled:
-        paired_buttons.append(InlineKeyboardButton(text=texts.MENU_SUPPORT, icon_custom_emoji_id='5260535596941582167', callback_data='menu_support'))
+        keyboard.append([InlineKeyboardButton(text=texts.MENU_SUPPORT, icon_custom_emoji_id='5258474669769497337', callback_data='menu_support')])
 
     # Добавляем кнопку активации
     if settings.ACTIVATE_BUTTON_VISIBLE:
         paired_buttons.append(InlineKeyboardButton(text=settings.ACTIVATE_BUTTON_TEXT, callback_data='activate_button'))
 
-    paired_buttons.append(
-        InlineKeyboardButton(
-            text=texts.t('MENU_INFO', 'ℹ️ Инфо'),
-            icon_custom_emoji_id='5258328383183396223',
-            callback_data='menu_info',
-        )
-    )
 
     if settings.is_language_selection_enabled():
         paired_buttons.append(InlineKeyboardButton(text=texts.MENU_LANGUAGE, icon_custom_emoji_id='5776233299424843260', callback_data='menu_language'))
@@ -989,7 +981,10 @@ def get_happ_download_platform_keyboard(language: str = DEFAULT_LANGUAGE) -> Inl
                 text=texts.t('HAPP_PLATFORM_WINDOWS', '💻 Windows'), callback_data='happ_download_windows'
             )
         ],
-        [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='happ_download_close')],
+        [
+            InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+            InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='happ_download_close'),
+        ],
     ]
 
     return InlineKeyboardMarkup(inline_keyboard=buttons)
@@ -999,7 +994,10 @@ def get_happ_download_link_keyboard(language: str, link: str) -> InlineKeyboardM
     texts = get_texts(language)
     buttons = [
         [InlineKeyboardButton(text=texts.t('HAPP_DOWNLOAD_OPEN_LINK', '🔗 Открыть ссылку'), url=link)],
-        [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='happ_download_back')],
+        [
+            InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+            InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='happ_download_back'),
+        ],
     ]
 
     return InlineKeyboardMarkup(inline_keyboard=buttons)
@@ -1359,7 +1357,7 @@ def get_trial_keyboard(language: str = 'ru') -> InlineKeyboardMarkup:
         inline_keyboard=[
             [
                 InlineKeyboardButton(
-                    text=texts.t('TRIAL_ACTIVATE_BUTTON', '🎁 Активировать'), callback_data='trial_activate'
+                    text=texts.t('TRIAL_ACTIVATE_BUTTON', 'Активировать'), icon_custom_emoji_id='5260726538302660868', callback_data='trial_activate'
                 ),
                 InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='back_to_menu'),
             ]
@@ -1465,7 +1463,10 @@ def get_traffic_packages_keyboard(language: str = DEFAULT_LANGUAGE) -> InlineKey
             ]
         )
 
-    keyboard.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_config_back')])
+    keyboard.append([
+        InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+        InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_config_back'),
+    ])
 
     return InlineKeyboardMarkup(inline_keyboard=keyboard)
 
@@ -1511,7 +1512,10 @@ def get_countries_keyboard(
                     text=texts.t('CONTINUE_BUTTON', '✅ Продолжить'), callback_data='countries_continue'
                 )
             ],
-            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_config_back')],
+            [
+                InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_config_back'),
+            ],
         ]
     )
 
@@ -1546,7 +1550,10 @@ def get_devices_keyboard(current: int, language: str = DEFAULT_LANGUAGE) -> Inli
     keyboard.extend(
         [
             [InlineKeyboardButton(text=texts.t('CONTINUE_BUTTON', '✅ Продолжить'), callback_data='devices_continue')],
-            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_config_back')],
+            [
+                InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_config_back'),
+            ],
         ]
     )
 
@@ -2235,7 +2242,10 @@ def get_payment_methods_keyboard(amount_kopeks: int, language: str = DEFAULT_LAN
             ],
         )
 
-    keyboard.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_balance')])
+    keyboard.append([
+        InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+        InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_balance'),
+    ])
 
     _apply_payment_name_overrides(keyboard)
 
@@ -2351,6 +2361,15 @@ def get_support_keyboard(language: str = DEFAULT_LANGUAGE) -> InlineKeyboardMark
                 )
             ]
         )
+    rows.append(
+        [
+            InlineKeyboardButton(
+                text=texts.t('MENU_INFO', 'Инфо'),
+                icon_custom_emoji_id='5258328383183396223',
+                callback_data='menu_info',
+            )
+        ]
+    )
     rows.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='back_to_menu')])
     return InlineKeyboardMarkup(inline_keyboard=rows)
 
@@ -2419,7 +2438,10 @@ def get_autopay_keyboard(language: str = DEFAULT_LANGUAGE, sub_id: int | None = 
                     callback_data='autopay_set_period',
                 )
             ],
-            [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=back_cb)],
+            [
+                InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=back_cb),
+            ],
         ]
     )
 
@@ -2464,7 +2486,10 @@ def get_saved_cards_keyboard(cards: list, language: str = DEFAULT_LANGUAGE) -> I
     for card in cards:
         card_label = f'🗑 {_get_payment_method_display_name(card, language)}'
         keyboard.append([InlineKeyboardButton(text=card_label, callback_data=f'unlink_card_{card.id}')])
-    keyboard.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_balance')])
+    keyboard.append([
+        InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+        InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_balance'),
+    ])
     return InlineKeyboardMarkup(inline_keyboard=keyboard)
 
 
@@ -2495,7 +2520,10 @@ def get_autopay_days_keyboard(language: str = DEFAULT_LANGUAGE) -> InlineKeyboar
             [InlineKeyboardButton(text=f'{days} {_get_days_word(days)}', callback_data=f'autopay_days_{days}')]
         )
 
-    keyboard.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_autopay')])
+    keyboard.append([
+        InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+        InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_autopay'),
+    ])
 
     return InlineKeyboardMarkup(inline_keyboard=keyboard)
 
@@ -2520,7 +2548,10 @@ def get_autopay_period_keyboard(
             label = f'✅ {label}'
         keyboard.append([InlineKeyboardButton(text=label, callback_data=f'autopay_period_{days}')])
 
-    keyboard.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_autopay')])
+    keyboard.append([
+        InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+        InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='subscription_autopay'),
+    ])
 
     return InlineKeyboardMarkup(inline_keyboard=keyboard)
 
@@ -2572,7 +2603,10 @@ def get_add_traffic_keyboard(
                         callback_data='no_traffic_packages',
                     )
                 ],
-                [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=back_cb)],
+                [
+                    InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                    InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=back_cb),
+                ],
             ]
         )
 
@@ -2607,7 +2641,10 @@ def get_add_traffic_keyboard(
 
         buttons.append([InlineKeyboardButton(text=text, callback_data=f'add_traffic_{gb}')])
 
-    buttons.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=back_cb)])
+    buttons.append([
+        InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+        InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=back_cb),
+    ])
 
     return InlineKeyboardMarkup(inline_keyboard=buttons)
 
@@ -2643,7 +2680,10 @@ def get_add_traffic_keyboard_from_tariff(
                         callback_data='no_traffic_packages',
                     )
                 ],
-                [InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=back_cb)],
+                [
+                    InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+                    InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=back_cb),
+                ],
             ]
         )
 
@@ -2675,7 +2715,10 @@ def get_add_traffic_keyboard_from_tariff(
 
         buttons.append([InlineKeyboardButton(text=text, callback_data=f'add_traffic_{gb}')])
 
-    buttons.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=back_cb)])
+    buttons.append([
+        InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+        InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=back_cb),
+    ])
 
     return InlineKeyboardMarkup(inline_keyboard=buttons)
 
@@ -2774,7 +2817,10 @@ def get_change_devices_keyboard(
             0, [InlineKeyboardButton(text=current_button, callback_data=f'change_devices_{current_devices}')]
         )
 
-    buttons.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=back_callback)])
+    buttons.append([
+        InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+        InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=back_callback),
+    ])
 
     return InlineKeyboardMarkup(inline_keyboard=buttons)
 
@@ -2931,7 +2977,10 @@ def get_manage_countries_keyboard(
 
     buttons.append([InlineKeyboardButton(text=apply_text, callback_data='countries_apply')])
 
-    buttons.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=back_cb)])
+    buttons.append([
+        InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+        InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=back_cb),
+    ])
 
     return InlineKeyboardMarkup(inline_keyboard=buttons)
 
@@ -2980,7 +3029,10 @@ def get_device_selection_keyboard(
             ]
         )
 
-    keyboard.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=back_cb)])
+    keyboard.append([
+        InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+        InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=back_cb),
+    ])
 
     return InlineKeyboardMarkup(inline_keyboard=keyboard)
 
@@ -3217,7 +3269,10 @@ def get_extend_subscription_keyboard_with_prices(language: str, prices: dict) ->
 
         keyboard.append([InlineKeyboardButton(text=button_text, callback_data=f'extend_period_{days}')])
 
-    keyboard.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_subscription')])
+    keyboard.append([
+        InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+        InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_subscription'),
+    ])
 
     return InlineKeyboardMarkup(inline_keyboard=keyboard)
 
@@ -3313,7 +3368,10 @@ def get_devices_management_keyboard(
         ]
     )
 
-    keyboard.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=back_callback)])
+    keyboard.append([
+        InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+        InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=back_callback),
+    ])
 
     return InlineKeyboardMarkup(inline_keyboard=keyboard)
 
@@ -3403,7 +3461,10 @@ def get_updated_subscription_settings_keyboard(
             ]
         )
 
-    keyboard.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_subscription')])
+    keyboard.append([
+        InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+        InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_subscription'),
+    ])
 
     return InlineKeyboardMarkup(inline_keyboard=keyboard)
 
@@ -3511,7 +3572,10 @@ def get_my_tickets_keyboard(
 
         keyboard.append(nav_row)
 
-    keyboard.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_support')])
+    keyboard.append([
+        InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+        InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='menu_support'),
+    ])
 
     return InlineKeyboardMarkup(inline_keyboard=keyboard)
 
@@ -3540,7 +3604,10 @@ def get_ticket_view_keyboard(
             ]
         )
 
-    keyboard.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='my_tickets')])
+    keyboard.append([
+        InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+        InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='my_tickets'),
+    ])
 
     return InlineKeyboardMarkup(inline_keyboard=keyboard)
 
@@ -3653,7 +3720,10 @@ def get_admin_tickets_keyboard(
 
         keyboard.append(nav_row)
 
-    keyboard.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=back_callback)])
+    keyboard.append([
+        InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+        InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data=back_callback),
+    ])
 
     return InlineKeyboardMarkup(inline_keyboard=keyboard)
 
@@ -3705,7 +3775,10 @@ def get_admin_ticket_view_keyboard(
             ]
         )
 
-    keyboard.append([InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_tickets')])
+    keyboard.append([
+        InlineKeyboardButton(text=texts.t('MENU_HOME_BUTTON', 'Меню'), icon_custom_emoji_id='6042137469204303531', callback_data='back_to_menu'),
+        InlineKeyboardButton(text=texts.BACK, icon_custom_emoji_id='5258236805890710909', callback_data='admin_tickets'),
+    ])
 
     return InlineKeyboardMarkup(inline_keyboard=keyboard)
 
