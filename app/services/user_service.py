@@ -566,6 +566,20 @@ class UserService:
                         value=abs(amount_kopeks) / 100,
                     )
 
+            # Реферальная награда при ручном пополнении админом (wzooh: считаем
+            # админское начисление полноценным пополнением, чтобы рефералка работала)
+            if success and amount_kopeks > 0:
+                try:
+                    from app.services.referral_service import process_referral_topup
+
+                    await process_referral_topup(db, user.id, amount_kopeks, bot)
+                except Exception as referral_error:
+                    logger.error(
+                        'Ошибка обработки реферальной награды при ручном пополнении',
+                        error=referral_error,
+                        user_id=user_id,
+                    )
+
             # Отправляем уведомление пользователю, если операция прошла успешно
             if success and bot:
                 # Обновляем пользователя для получения нового баланса
